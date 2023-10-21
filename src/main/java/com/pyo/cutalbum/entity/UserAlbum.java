@@ -22,7 +22,7 @@ public class UserAlbum extends BaseTimeEntity{
     private String title;
     private String subTitle;
     private String inviteCode;
-    private Long coverIndex;
+    private Long coverIndex=0L;
 
 
     @ManyToOne

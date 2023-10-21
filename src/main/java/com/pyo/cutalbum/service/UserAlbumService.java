@@ -28,5 +28,8 @@ public class UserAlbumService {
     {
         return userAlbumRepository.findById(id);
     }
-
+    public Optional<UserAlbum>findById(Long id)
+    {
+        return userAlbumRepository.findById(id);
+    }
 }

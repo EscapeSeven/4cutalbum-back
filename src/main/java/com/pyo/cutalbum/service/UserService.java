@@ -29,5 +29,9 @@ public class UserService {
         }
         return false;
     }
+    public User findUser(String nickname)
+    {
+        return userRepository.findByNickname(nickname).get();
+    }
 
 }

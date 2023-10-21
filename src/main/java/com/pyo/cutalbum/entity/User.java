@@ -31,10 +31,10 @@ public class User extends BaseTimeEntity{
     private List<UserAlbum> userPosts=new ArrayList<>();
 
 
-    public void addPost(UserAlbum userPost)
+    public void addAlbum(UserAlbum userAlbum)
     {
-        userPosts.add(userPost);
-        userPost.setUser(this);
+        userPosts.add(userAlbum);
+        userAlbum.setUser(this);
     }
 
 

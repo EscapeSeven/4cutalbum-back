@@ -1,10 +1,7 @@
 package com.pyo.cutalbum.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -15,9 +12,10 @@ import lombok.*;
 @Builder
 public class UserAlbum extends BaseTimeEntity{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String subtitle;
+    private String subTitle;
     private String inviteCode;
     private String imageUrl;
 

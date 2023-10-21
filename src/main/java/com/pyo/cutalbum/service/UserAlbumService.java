@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +22,11 @@ public class UserAlbumService {
     }
     public List<UserAlbum> getUserAlbums()
     {
-        return userAlbumRepository.findAll();
+        return userAlbumRepository.findAllAlbumsFetchJoin();
+    }
+    public Optional<UserAlbum> getUserAlbumById(Long id)
+    {
+        return userAlbumRepository.findById(id);
     }
 
 }

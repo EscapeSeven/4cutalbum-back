@@ -29,12 +29,13 @@ public class AlbumController {
     @Operation(summary = "앨범 저장하기", description = "앨범 저장 API 입니다.")
     @PostMapping("/user/album/write")
     public ResponseEntity<?> writePost(UserAlbumRequest userAlbumRequest) throws IOException {
-        String imageUrl = gcsService.uploadPhoto(userAlbumRequest.getImageFile());
         String inviteCode = getInviteCode();
+        if (userAlbumRequest.getSubTitle()==null ||userAlbumRequest.getTitle()==null||userAlbumRequest.getCoverIndex()==null)
+            return apiResponse.fail("빈 값이 있습니다.");
         UserAlbum userAlbum = UserAlbum.builder()
                 .title(userAlbumRequest.getTitle())
                 .subTitle(userAlbumRequest.getSubTitle())
-                .imageUrl(imageUrl)
+                .coverIndex(userAlbumRequest.getCoverIndex())
                 .inviteCode(inviteCode)
                 .build();
         User blue = userService.findUser("blue");

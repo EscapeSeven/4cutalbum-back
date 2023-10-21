@@ -28,12 +28,12 @@ public class User extends BaseTimeEntity{
 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     @JsonManagedReference
-    private List<UserAlbum> userPosts=new ArrayList<>();
+    private List<UserAlbum> userAlbumss =new ArrayList<>();
 
 
     public void addAlbum(UserAlbum userAlbum)
     {
-        userPosts.add(userAlbum);
+        userAlbumss.add(userAlbum);
         userAlbum.setUser(this);
     }
 

@@ -18,7 +18,8 @@ public class SwaggerConfig {
                         addList("Bearer Authentication"))
                 .info(new Info().title("4cus API")
                         .description("4cus API 명세서 입니다. 수정할게 있다면 알려주세요. 폼데이터로 데이터 전송하셔야 됩니다. " +
-                                "사진 저장 오래걸립니다. 연타 X 프론트에서 연타 안되도록 처리해주시면 감사하겠습니다.")
+                                "사진 저장 오래걸립니다. 연타 X 프론트에서 연타 안되도록 처리해주시면 감사하겠습니다." +
+                                "url은 안복잡하게 하려고 일단 줄여놨습니다..")
                         .version("1.0").contact(new Contact().name("BLUE")));
     }
 

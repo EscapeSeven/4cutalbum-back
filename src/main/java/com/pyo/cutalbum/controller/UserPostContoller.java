@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -63,6 +64,15 @@ public class UserPostContoller {
             return apiResponse.fail("잘못된 요청입니다.");
         userPostService.like(post_id);
         return apiResponse.success(userPost.get().getLikes()+1);
+
+    }
+    @Operation(summary = "사진 가져오기", description = "사진 정보 가져오는 API")
+    @GetMapping("/user/album/{post_id}")
+    public ResponseEntity<?> getUserPost(@PathVariable Long post_id) {
+        Optional<UserPost> userPost = userPostService.findById(post_id);
+        if (!userPost.isPresent())
+            return apiResponse.fail("잘못된 요청입니다.");
+        return apiResponse.success(userPost.get());
 
     }
 }

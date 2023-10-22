@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -30,8 +31,9 @@ public class AlbumController {
     @PostMapping("/user/album/write")
     public ResponseEntity<?> writePost(UserAlbumRequest userAlbumRequest) throws IOException {
         String inviteCode = getInviteCode();
-        if (userAlbumRequest.getSubTitle()==null ||userAlbumRequest.getTitle()==null||userAlbumRequest.getCoverIndex()==null)
-            return apiResponse.fail("빈 값이 있습니다.");
+        if (!StringUtils.hasText(userAlbumRequest.getSubTitle()) || !StringUtils.hasText(userAlbumRequest.getTitle())||
+                !StringUtils.hasText(Long.toString(userAlbumRequest.getCoverIndex())))
+            return apiResponse.fail("필수값을 입력해주세요.");
         UserAlbum userAlbum = UserAlbum.builder()
                 .title(userAlbumRequest.getTitle())
                 .subTitle(userAlbumRequest.getSubTitle())
@@ -42,7 +44,6 @@ public class AlbumController {
         blue.addAlbum(userAlbum);
         userAlbumService.save(userAlbum);
         return apiResponse.success("앨범추가 성공");
-
     }
     @Operation(summary = "앨범 불러오기", description = "앨범 불러오기 API 입니다.")
     @GetMapping("/user/albums")

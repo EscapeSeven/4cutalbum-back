@@ -8,10 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserAlbumResponse {
-    private String id;
+    private Long id;
     private String title;
     private String subTitle;
     private String inviteCode;
-    private String coverIndex;
+    private Long coverIndex;
     private String createdDate;
 }

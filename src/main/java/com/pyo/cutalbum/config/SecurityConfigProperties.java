@@ -14,4 +14,7 @@ public class SecurityConfigProperties {
 
     @Value("${spring.security.origin2}")
     public String ORIGIN2;
+
+    @Value("${spring.security.origin3}")
+    public String ORIGIN3;
 }
